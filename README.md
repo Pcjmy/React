@@ -13,3 +13,16 @@
 ```shell
 > npm start
 ```
+
+### 项目打包
+
+```shell
+> npm run build
+```
+
+### TypeScript
+
+```shell
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+```
+
