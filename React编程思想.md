@@ -22,6 +22,12 @@
 + 保持视觉风格的统一
 + 便于程序员互相之间的协作
 
+### React组件的生命周期
+
++ Mounting: 创建虚拟DOM，渲染UI
++ Updating: 更新虚拟DOM，重新渲染UI
++ Unmounting: 删除虚拟DOM，移除UI
+
 
 
 
