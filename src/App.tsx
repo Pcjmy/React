@@ -13,6 +13,8 @@ interface State {
 }
 
 class App extends React.Component<Props, State> {
+  // 生命周期第一阶段：初始化
+  // 初始化组件 state
   constructor(props) {
     super(props)
     this.state = {
@@ -20,11 +22,18 @@ class App extends React.Component<Props, State> {
       count: 0
     }
   }
+  // 在组件创建好DOM元素以后，挂载进页面的时候调用
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((res) => res.json())
     .then((data) => this.setState({robotGallery: data}))
   }
+  // 生命周期第二阶段：更新
+  // 组件更新后调用
+  componentDidUpdate() {}
+  // 生命周期第三阶段：销毁
+  // 组件销毁后调用
+  componentWillUnmount() {}
   render() {
     return (
       <div className={styles.app}>
