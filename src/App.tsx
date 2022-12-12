@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from './assets/images/logo.svg';
 import robots from './mockdata/robots.json';
 import Robot from './components/Robot';
@@ -8,6 +8,17 @@ import ShoppingCart from './components/ShoppingCart'
 
 const App: React.FC = (props) => {
   const [count, setCount] = useState<number>(0)
+  const [robotGallery, setRobotGallery] = useState<any>([])
+
+  useEffect(() => {
+    document.title = `点击${count}次`
+  }, [count])
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+    .then(data => setRobotGallery(data))
+  })
 
   return (
     <div className={styles.app}>
