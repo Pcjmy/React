@@ -9,4 +9,10 @@
 > npm install react-icons
 ```
 
+## 出现的问题
+
+```shell
+Property 'children' does not exist on type '{}'.
+```
+
 [React 中文官方文档](https://react.docschina.org/)
