@@ -7,6 +7,8 @@
 # 安装插件
 > npm install typescript-plugin-css-modules --save-dev
 > npm install react-icons
+# 代码格式化
+> npx prettier --write "**/*.tsx"
 ```
 
 ## 出现的问题

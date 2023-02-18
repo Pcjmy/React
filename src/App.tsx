@@ -1,46 +1,38 @@
-import React,{useState,useEffect} from "react";
-import logo from "./assets/images/logo.svg";
-import robots from "./mockdata/robots.json";
-import Robot from "./components/Robot";
-import RobotDiscount from "./components/RobotDiscount"
-import styles from "./App.module.css";
-import ShoppingCart from "./components/ShoppingCart";
+import React, { useState, useEffect } from 'react'
+import logo from './assets/images/logo.svg'
+import Robot from './components/Robot'
+import RobotDiscount from './components/RobotDiscount'
+import styles from './App.module.css'
+import ShoppingCart from './components/ShoppingCart'
 
-interface Props {
-
-}
-
-interface State {
-  robotGallery: any[];
-  count: number;
-}
+interface Props {}
 
 const App: React.FC<Props> = (props) => {
-  const [count, setCount] = useState<number>(0);
-  const [robotGallery, setRobotGallery] = useState<any>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error,  setError] = useState<string>()
+  const [count, setCount] = useState<number>(0)
+  const [robotGallery, setRobotGallery] = useState<any>([])
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>()
 
   useEffect(() => {
     document.title = `点击${count}次`
   }, [count])
-  
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
-      try{
+      try {
         const responses = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
+          'https://jsonplaceholder.typicode.com/users'
+        )
         // .then(response => response.json())
         // .then(data=>setRobotGallery(data))
-        const data = await responses.json();
-        setRobotGallery(data);
-      } catch(e) {
-        setError(e.message);
+        const data = await responses.json()
+        setRobotGallery(data)
+      } catch (e: any) {
+        setError(e.message)
       }
       setLoading(false)
-    };
+    }
     fetchData()
   }, [])
   return (
@@ -51,29 +43,34 @@ const App: React.FC<Props> = (props) => {
       </div>
       <button
         onClick={() => {
-          setCount(count + 1);
+          setCount(count + 1)
         }}
       >
         Click
       </button>
       <span>count:{count}</span>
       <ShoppingCart />
-      {!error || error!==""&&<div>网站出错：{error}</div>}
+      {!error || (error !== '' && <div>网站出错：{error}</div>)}
       {!loading ? (
         <div className={styles.robotList}>
-          {robotGallery.map((r, index) => 
-              index % 2 === 0 ?(
-                  <RobotDiscount id={r.id} email={r.email} name={r.name} key={index} />
-              ): (
-                  <Robot id={r.id} email={r.email} name={r.name} key={index} />
-              )
+          {robotGallery.map((r, index) =>
+            index % 2 === 0 ? (
+              <RobotDiscount
+                id={r.id}
+                email={r.email}
+                name={r.name}
+                key={index}
+              />
+            ) : (
+              <Robot id={r.id} email={r.email} name={r.name} key={index} />
+            )
           )}
         </div>
       ) : (
         <h2>loading加载中</h2>
       )}
     </div>
-  );  
-};
+  )
+}
 
-export default App;
+export default App
