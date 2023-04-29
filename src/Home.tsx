@@ -1,10 +1,18 @@
 import React from 'react'
-import Component from './components/Component'
+import { useState } from 'react'
 
-interface Props {}
+const Home: React.FC = () => {
+  const [count, setCount] = useState(0)
 
-const Home: React.FC<Props> = () => {
-  return <Component />
+  function handleClick() {
+    setCount(count + 1)
+  }
+
+  return (
+    <div>
+      <button onClick={handleClick}>add {count}</button>
+    </div>
+  )
 }
 
 export default Home
