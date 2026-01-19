@@ -11,12 +11,6 @@
 > npx prettier --write "**/*.tsx"
 ```
 
-## 出现的问题
-
-```shell
-Property 'children' does not exist on type '{}'.
-```
-
-[React 中文官方文档](https://react.docschina.org/)
+[React 中文官方文档](https://react.docschina.org)
 
 ![](assets/思维导图.png)
