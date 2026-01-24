@@ -1,0 +1,110 @@
+.virtual-list-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.virtual-list-title {
+  margin-top: 0;
+}
+
+.virtual-list-description {
+  margin-bottom: 20px;
+}
+
+.virtual-list-controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.virtual-list-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.virtual-list-input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.virtual-list-input-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.virtual-list-label {
+  color: #999;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.virtual-list-input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 5px 8px;
+  outline: none;
+}
+
+.virtual-list-input:focus {
+  border-color: #007cba;
+}
+
+.virtual-list-scroller {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.virtual-list-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.virtual-list-letter {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.virtual-list-content {
+  flex-grow: 1;
+}
+
+.virtual-list-name {
+  font-weight: bold;
+}
+
+.virtual-list-index {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.virtual-list-height {
+  margin-left: 10px;
+  color: #999;
+  font-size: 0.8em;
+}
+
+.virtual-list-scrolling-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
