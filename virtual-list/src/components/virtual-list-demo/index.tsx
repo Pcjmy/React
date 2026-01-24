@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { List, AutoSizer } from 'react-virtualized';
 import 'react-virtualized/styles.css'; // 导入默认样式
 import './index.css'; // 导入自定义样式
@@ -149,9 +149,20 @@ const VirtualListDemo: React.FC = () => {
     );
   };
 
+  // 添加对List实例的引用
+  const listRef = React.useRef<any>(null);
+
   // 更新状态的辅助函数
   const updateState = (newState: Partial<VirtualListDemoState>) => {
+    const prevUseDynamicRowHeight = state.useDynamicRowHeight;
     setState(prev => ({ ...prev, ...newState }));
+
+    // 如果切换了动态行高模式，则重新计算行高
+    if (newState.useDynamicRowHeight !== undefined &&
+        newState.useDynamicRowHeight !== prevUseDynamicRowHeight &&
+        listRef.current) {
+      listRef.current.recomputeRowHeights();
+    }
   };
 
   const {
@@ -252,13 +263,15 @@ const VirtualListDemo: React.FC = () => {
         </div>
       </div>
 
-      <div 
-        className="virtual-list-scroller" 
+      <div
+        className="virtual-list-scroller"
         style={{ height: `${listHeight}px` }}
       >
         <AutoSizer>
           {({ width, height }: { width: number; height: number }) => (
             <List
+              key={`virtual-list-${useDynamicRowHeight}`} // 强制在切换动态/静态模式时重新创建组件
+              ref={listRef}
               height={listHeight}
               overscanRowCount={overscanRowCount}
               noRowsRenderer={noRowsRenderer}
